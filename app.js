@@ -33,6 +33,9 @@ const transporter = nodemailer.createTransport({
 app.options("*", cors(corsOptions)); // Allow all endpoints to handle OPTIONS request
 
 // Email endpoint
+app.get("/",async (req,res,next)=>{
+  res.status(200).json({ message: "Emails sent successfully!" });
+})
 app.post("/send-email", async (req, res) => {
   const { fullname, email, message } = req.body;
 
